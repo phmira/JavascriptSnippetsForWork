@@ -1,0 +1,7 @@
+/* Works on QR from bag! */
+var inputValue = document.getElementById("txtBarcode").value;
+console.log(inputValue);
+var oldWord = "$P2L$"
+var outputValue = inputValue.replace(oldWord, "");
+console.log(outputValue);
+document.getElementById("txtBarcode").value = outputValue;

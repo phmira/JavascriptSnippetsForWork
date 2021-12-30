@@ -1,0 +1,46 @@
+//Make input type text
+var input = document.createElement("input");
+input.type = "text";
+input.className = "qrinput";
+input.setAttribute("id", "qrinput");
+input.placeholder = "Insert QR code!";
+input.style.display = "inline-block";
+input.style.marginBottom = "5px";
+
+//Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("qrbutton").click();
+    console.log("Button clicked")
+  }
+});
+
+//Make input type button
+var button = document.createElement("input");
+button.type = "button";
+button.className = "qrbutton";
+input.setAttribute("id", "qrbutton");
+button.value = "Send";
+button.style.display = "inline-block";
+
+button.onclick = function(){
+//Delete shit from SN
+/* Works on QR from bag! */
+var inputValue = document.getElementById("txtBarcode").value;
+console.log(inputValue);
+var oldWord = "$P2L$"
+var outputValue = inputValue.replace(oldWord, "");
+console.log(outputValue);
+document.getElementById("txtBarcode").value = outputValue;
+};
+
+//Get aprent and put input ad first child
+var parent = document.getElementById("tr_1");
+parent.appendChild(input);
+parent.appendChild(button);
+parent.insertBefore(input, parent.childNodes[0]);
+parent.insertBefore(button, parent.childNodes[1]);
